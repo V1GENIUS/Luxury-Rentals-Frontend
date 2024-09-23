@@ -1,0 +1,58 @@
+.cards{
+    display: flex;
+    justify-content: center;
+  }
+.card{
+  
+   width: 382px;
+   height: 306px;
+} 
+
+.pricebox{
+    position: relative;
+  }
+  .price{
+    position: absolute;
+    background-color: #F5E9D6;
+    bottom: 230px;
+    width: 130px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 5px 5px 15px 5px;
+    font-size: 15px;
+    left: 20px;
+  }
+  
+  .heart{
+    position: absolute;
+    bottom: 237px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px 5px 15px 5px;
+    left: 260px;
+  }
+  
+  .location_2{
+    display: flex;
+    margin-inline-start: 20px;
+    
+  }
+  .imgvilla{
+    border-radius: 5px;
+  }
+  .white_box{
+    width: 302px;
+    border-radius: 10px;
+   }
+  
+  .card_des_2{
+  display: flex;
+  margin-inline-start: 20px;
+  }
+  
+  .card_des_box{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+   padding: 5px;
+   
+  }

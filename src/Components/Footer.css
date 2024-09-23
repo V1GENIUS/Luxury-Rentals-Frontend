@@ -1,0 +1,22 @@
+.Footer{
+    height: 450px;
+    color: #5B656F;
+    background-color:#DFE3E7 ;
+    align-items: center;
+    align-content: center;
+}
+.Footer_content{
+    width: 1200px;
+    display: flex;  
+    text-align: start;
+    /* justify-content: center; */
+    align-items: center;
+    margin-inline-start: -100px;
+    margin-top: 150px;
+}
+.scl_icn{
+
+    margin-left: 13px;
+    margin-top: 20px;
+   
+}

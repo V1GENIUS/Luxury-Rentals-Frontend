@@ -1,0 +1,40 @@
+.All_villa{ 
+    height: fit-content;
+    background: linear-gradient(#908c8c , #f4f0f0);
+}
+
+.Cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 150px 0;
+    margin-top: 50px;
+}
+
+.page__2{
+    background-image: url('/src/Images/villasbg.png');
+     background-size: cover;
+     height: 100%;   
+}
+
+.villas_2{
+    /* height: 30px; */
+    margin-top: 100px;
+    display: flex;
+
+}
+
+.about_3{
+    /* height: 330px; */
+    margin-top: 200px;
+    display: flex;
+}
+.connection_villa{
+    color: #ffffff;
+    margin-inline-start: 150px;
+    width: 1000px;
+    /* height: 306px; */
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}

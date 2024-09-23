@@ -1,0 +1,16 @@
+
+.aboutUs_3{
+    height: 400px;
+    margin-top: 200px;
+    display: flex;
+}
+.Connection_aboutus{
+    color: #ffffff;
+    margin-inline-start: 150px;
+    width: 1000px;
+    height: 306px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
