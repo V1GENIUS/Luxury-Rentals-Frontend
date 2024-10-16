@@ -8,13 +8,14 @@
 .villaname h1{
     color: #ffffff;
     font-size: 40px;
+    width: 400px;
     margin-top: -5px;
     margin-inline-start: 10px;
 
 }
 .Villasave{
 display: flex;
-margin-inline-start: 750px;
+margin-inline-start: 450px;
 margin-top: -30px;
 
 }
@@ -30,7 +31,7 @@ margin-top: -30px;
 }
 .section_1{
     padding-left: 40px;
-    height: 550px;
+    height: 500px;
     width: 1270px;
     justify-content: center;
 }
@@ -46,6 +47,21 @@ margin-top: -30px;
     margin-bottom: 0;
     position: relative;
 
+}
+.buy{
+    margin-top: 32px;
+    
+}
+.buy_btn{
+    background-color: black;
+    height: 40px;
+    width: 100px ;
+    margin-left: 20px;
+    border: transparent;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    
 }
 .pricebox1{
     position: relative;

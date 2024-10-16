@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom'; 
+import React, { useState  ,useEffect  } from 'react';
+import { useLocation , Outlet  } from 'react-router-dom'; 
 import './VillaView.css';
+import axios from 'axios';
+
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import Calendar from 'react-calendar';
@@ -56,53 +58,186 @@ import icon42 from '../Icons/phone-call (1).png'
 import icon43 from '../Icons/email.png'
 import icon44 from '../Icons/internet.png'
 import icon45 from '../Icons/email (1).png'
+import { loadStripe } from '@stripe/stripe-js';
 
-
-                                
 
 function VillaView(props) {
   const { state } = useLocation();
   const villa = state.villa; 
   const [date, setDate] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState('stripe');
+    const [paypalLoaded, setPaypalLoaded] = useState(false);
+
+    useEffect(() => {
+      if (paymentMethod === 'paypal' && !paypalLoaded) {
+        // Load PayPal script dynamically
+        const script = document.createElement('script');
+        script.src = "https://www.paypal.com/sdk/js?client-id=Af2STNtk04CHiNvitle3T3Re1tdVlPQeggU2hbl5-Wx6cQhd_JRpUbE0fDR_gxrSHdXMmDJy_1hET4EE";
+        script.addEventListener('load', () => setPaypalLoaded(true));
+        document.body.appendChild(script);
+      }
+    }, [paymentMethod, paypalLoaded]);
  
-  return (
+  const stripePromise = loadStripe("pk_test_51Q5kKeSFABMAnpHQCwgdz997rYzRt7VpeY7d6oa9pIniTErioqXkRisMSAeVxUFLSgGzRdTqZshj1cIln7E9FNjx00VAwfu6ro");
+
+  const apiURL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api'; 
+ 
+  const handleStripePayment = async () => {
+    const stripe = await stripePromise;
+
+    const body = {
+        villa: villa,
+        quantity: 1,
+    };
+
+    try {
+        const response = await fetch(`${apiURL}/create-checkout-session`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Network response was not ok');
+        }
+
+        const session = await response.json();
+
+        if (session.id) {
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.id,
+            });
+
+            if (result.error) {
+                console.error(result.error.message);
+                alert(result.error.message);
+            }
+        } else {
+            console.error('Not Find Any Session ID');
+            alert('Checkout session Are Unsuccessfull');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`Error in payment processing ${error.message}`);
+    }
+}
+const handlePayPalPayment = async () => {
+  const body = {
+    paymentMethod: 'paypal',
+    villa: { price: 150, Villaname: "Luxury Villa" },  
+    quantity: 1
+  };
+
+  try {
+    const response = await axios.post(`${apiURL}/create-payment-order`, body);
+    const { orderID } = response.data;
+
+    window.paypal.Buttons({
+      createOrder: () => orderID,
+      onApprove: async (data, actions) => {
+        try {
+          const captureResponse = await axios.post(`${apiURL}/capture-paypal-payment`, { orderId: data.orderID });
+          alert('Payment successful!');
+        } catch (error) {
+          console.error('Error capturing PayPal payment:', error);
+          alert('Payment capture failed: ' + error.message);
+        }
+      },
+      onError: (err) => {
+        console.error('PayPal Checkout Error:', err);
+        alert('PayPal Checkout Error: ' + err);
+      }
+    }).render('#paypal-button-container');
+
+  } catch (error) {
+    console.error('Error creating PayPal order:', error);
+    alert('Error creating PayPal order: ' + error.message);
+  }
+};
+
+
+return (
     <>
     <div className='Villaview'>
+    {/* <div className="payment-page">
+           
+           <div>
+               <label>
+                   <input
+                       type="radio"
+                       name="paymentMethod"
+                       value="stripe"
+                       checked={paymentMethod === 'stripe'}
+                       onChange={() => setPaymentMethod('stripe')}
+                   />
+                   Pay with Stripe
+               </label>
+               <label>
+                   <input
+                       type="radio"
+                       name="paymentMethod"
+                       value="paypal"
+                       checked={paymentMethod === 'paypal'}
+                       onChange={() => setPaymentMethod('paypal')}
+                   />
+                   Pay with PayPal
+               </label>
+           </div>
+
+           {paymentMethod === 'stripe' && (
+               <button onClick={handleStripePayment}>Pay with Stripe</button>
+           )}
+
+           {paymentMethod === 'paypal' && (
+              //  <div id="paypal-button-container"></div>
+              <button onClick={handlePayPalPayment}>Pay with Paypal</button>
+           )}
+       </div> */}
       <Navbar/>
       <div className='section_1'>
         <div className='villaname' >
           <h1 >{villa.Villaname}</h1>
-          
           <div className='Villasave'>
-          <div className='save'>
-            <h4>save</h4>
-            <img className='' src={iconlike} alt="homepage" width="20" height="20" style={{marginTop:'45px', marginInlineStart:'20px'}}/>
-          </div>
+            <div className='save'>
+              <h4>save</h4>
+              <img className='' src={iconlike} alt="homepage" width="20" height="20" style={{marginTop:'45px', marginInlineStart:'20px'}}/>
+            </div>
           <div  className='save' >
             <h4>share</h4>
             <img className='' src={iconShare} alt="homepage" width="25" height="25"   style={{marginTop:'40px', marginInlineStart:'20px'}}/>
           </div>
-        </div>                   
-      </div>
-        
-        <div className='page1_content'>
-          <div >
-           <img className='main_img' src={villa.Imageview} alt="homepage" width="680" height="544" ></img>
-           <div className='pricebox1'>
-               <text className='price1'>From <b> € {villa.price} / daily</b></text>
-                 
-              </div>
-          </div>
-
-          <div style={{display:'flex' , flexWrap:'wrap'}}>
-
-            <img className='img_gallary' src={img1gallary} alt="homepage" width="280" height="220"  ></img>
-            <img className='img_gallary' src={img2gallary} alt="homepage" width="280" height="220" ></img>
-            <img className='img_gallary' src={img3gallary} alt="homepage" width="280" height="220" style={{marginTop:'-75px'}} ></img>
-            <img className='img_gallary' src={img4gallary} alt="homepage" width="280" height="220" style={{marginTop:'-75px'}} ></img>
-
+          <div className='buy'>
+            <div>
+                 <button className='buy_btn' onClick={handleStripePayment}  >
+                <b>Buy or Rent</b>
+                </button>
+             </div>
+            </div>
           </div>
         </div>
+
+          <div className='page1_content'>
+            <div >
+            <img className='main_img' src={villa.Imageview} alt="homepage" width="680" height="544" ></img>
+            <div className='pricebox1'>
+                <text className='price1'>From <b> € {villa.price} / daily</b></text>
+              </div>
+            </div>
+
+            <div style={{display:'flex' , flexWrap:'wrap'}}>
+
+              <img className='img_gallary' src={img1gallary} alt="homepage" width="280" height="220"  ></img>
+              <img className='img_gallary' src={img2gallary} alt="homepage" width="280" height="220" ></img>
+              <img className='img_gallary' src={img3gallary} alt="homepage" width="280" height="220" style={{marginTop:'-75px'}} ></img>
+              <img className='img_gallary' src={img4gallary} alt="homepage" width="280" height="220" style={{marginTop:'-75px'}} ></img>
+
+            </div>
+          </div>
+          
+
       </div>
 {/* /////////////////////////////////////////////////////////////////////////////////// */}
 
@@ -317,11 +452,11 @@ function VillaView(props) {
                 <div className='villa_facilty21'  >
                   <div   >
                     <img className='icon' src={icon36} alt="homepage" width="25" height="25" />
-                   <text >Plates </text>            
+                   <text >Plates </text>
                   </div >
                   <div  >
                     <img className='icon' src={icon37} alt="homepage" width="25" height="25" />
-                    Refrigerator           
+                    Refrigerator
                   </div>
                 
                 </div>
@@ -333,18 +468,18 @@ function VillaView(props) {
                   </div >
                   <div  >
                     <img className='icon' src={icon39} alt="homepage" width="25" height="25" />
-                    Dishwasher            
+                    Dishwasher
                   </div>
                  
                 </div>
                 <div className='villa_facilty23'  >
                   <div   >
                     <img className='icon' src={icon40} alt="homepage" width="25" height="25" />
-                   <text >Coffee machine </text>            
+                   <text >Coffee machine </text>
                   </div >
                   <div  >
                     <img className='icon' src={icon41} alt="homepage" width="25" height="25" />
-                    Oven           
+                    Oven
                   </div>
                 </div>
                 </div>
@@ -378,12 +513,12 @@ function VillaView(props) {
             <div style={{marginInlineStart:'80px'}}>
 
               <div >
-                <button style={{width: '250px' ,height:  '48px',gap: '8px' ,borderRadius: '0px 10px 10px 10px' ,opacity: '0px' ,fontSize: '16px' ,fontWeight: '600' ,lineHeight: '24px' ,textAlign: 'center' , padding:'center'
+                <button style={{width: '250px' ,height:  '48px',gap: '8px' ,borderRadius: '0px 10px 10px 10px' ,opacity: '0px' ,fontSize: '16px' ,fontWeight: '600' ,lineHeight: '24px' ,textAlign: 'center' , padding:'center' , cursor:'pointer'
 }}
                 >Get An Offer</button>
               </div>
               <div>
-                <button style={{width: '250px' ,height:  '48px',gap: '8px', background:'transparent' ,color:'white',border:'transparent' ,fontSize: '16px' ,fontWeight: '600' ,lineHeight: '24px' ,textAlign: 'center' , padding:'center'}}>
+                <button style={{width: '250px' ,height:  '48px',gap: '8px', background:'transparent' ,color:'white',border:'transparent' ,fontSize: '16px' ,fontWeight: '600' ,lineHeight: '24px' ,textAlign: 'center' , padding:'center' , cursor:'pointer'}}>
                   Ask us for help
                 </button>
               </div>
@@ -436,13 +571,13 @@ function VillaView(props) {
             <h1>Book Your Villa</h1>
 
             <div >
-                <button style={{ fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign: 'center' , alignItems:'center' , backgroundColor:'#5B656F',color:'white' ,borderRadius: '0px 10px 10px 10px',width:'223px',height:'43px',borderColor:'transparent',marginInlineStart:'42px', marginTop:'25px'}}
+                <button style={{ fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign: 'center' , alignItems:'center' , backgroundColor:'#5B656F',color:'white' ,borderRadius: '0px 10px 10px 10px',width:'223px',height:'43px',borderColor:'transparent',marginInlineStart:'42px', marginTop:'25px' , cursor:'pointer'}}
                 >Call Owner <img  src={icon42} alt="homepage" width="20" height="20" /> </button>
 
-                 <button style={{ fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign: 'center' , alignItems:'center' , backgroundColor:'#5B656F',borderRadius: '0px 10px 10px 10px',width:'223px',height:'43px',borderColor:'transparent',marginInlineStart:'42px', marginTop:'25px',color:'white'}}
+                 <button style={{ fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign: 'center' , alignItems:'center' , backgroundColor:'#5B656F',borderRadius: '0px 10px 10px 10px',width:'223px',height:'43px',borderColor:'transparent',marginInlineStart:'42px', marginTop:'25px',color:'white', cursor:'pointer'}}
                 >Send Massage <img  src={icon45} alt="homepage" width="20" height="20" /> </button>
 
-                 <button style={{ fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign: 'center' , alignItems:'center' , backgroundColor:'#5B656F',borderRadius: '0px 10px 10px 10px',width:'223px',height:'43px',borderColor:'transparent',pointerEvents:'visible',marginInlineStart:'42px', marginTop:'25px',color:'white'}}
+                 <button style={{ fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign: 'center' , alignItems:'center' , backgroundColor:'#5B656F',borderRadius: '0px 10px 10px 10px',width:'223px',height:'43px',borderColor:'transparent',pointerEvents:'visible',marginInlineStart:'42px', marginTop:'25px',color:'white', cursor:'pointer'}}
 
                 >Visit Website <img  src={icon44} alt="homepage" width="20" height="20" /> </button>
 
@@ -473,13 +608,13 @@ function VillaView(props) {
       <div style={{display:'flex'}}>
         <div style={{marginInlineStart:'15px'}}>
           <h3>
-            Phone     
+            Phone
           </h3>
           <h3>
-            Email       
+            Email
           </h3>
           <h3>
-            Address       
+            Address
           </h3>
         </div>
         <div style={{marginInlineStart:'15px'}}>
@@ -526,11 +661,10 @@ function VillaView(props) {
 
       </div>
 
-    <Footer/>
+      <Footer/>
+      <Outlet/>
     </div>
-    
-    </>
-  )
-}
 
+  </>
+)}
 export default VillaView

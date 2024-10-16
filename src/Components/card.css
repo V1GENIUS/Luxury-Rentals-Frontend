@@ -6,10 +6,12 @@
   
    width: 382px;
    height: 306px;
+   cursor: pointer;
 } 
 
 .pricebox{
     position: relative;
+    cursor: pointer;
   }
   .price{
     position: absolute;
@@ -30,6 +32,7 @@
     height: 20px;
     border-radius: 5px 5px 15px 5px;
     left: 260px;
+    cursor: pointer;
   }
   
   .location_2{
@@ -39,10 +42,12 @@
   }
   .imgvilla{
     border-radius: 5px;
+    cursor: pointer;
   }
   .white_box{
     width: 302px;
     border-radius: 10px;
+    cursor: pointer;
    }
   
   .card_des_2{

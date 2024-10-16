@@ -1,0 +1,126 @@
+.panel_section1{
+    display: flex;
+    background-color: rgb(149, 117, 174);
+    width: 1350px;
+    height: 600px;
+   
+}
+
+
+.villa_details span{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(233, 230, 231);
+}
+
+.villa_input{
+    /* margin-inline-start: 100px; */
+    border: transparent;
+    border-radius: 20px;
+    padding: 10px;
+
+}
+/*  */
+.existing-villas{
+
+    margin-inline-start: 0px;
+
+}
+
+.table_data{
+    width: 250px;
+    height: 40px;
+    text-align: center;
+
+}
+
+
+.form-group{
+  display: grid;
+}
+.form-group label {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 30px;
+  font-size: 18px;
+  color: white;
+}
+
+
+.form_control{
+  margin-top: 10px;
+  width: 1000px;
+  border-radius: 5px;
+  height: 35px;
+  margin-left: 30px;
+  border: transparent;
+  padding-left: 20px;
+}
+
+.btn {
+  margin-right: 50px;
+}
+.Add_btn
+{
+  width: 100px;
+  height: 40px;
+  border: transparent;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.delete_btn{
+  width: 100px;
+  height: 40px;
+  border: transparent;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.table {
+  border: 0.5px solid black;
+  border-collapse: collapse;
+  border-spacing: 30px; /* Gap between th elements */
+}
+
+.table th, .table td {
+  border: 0.5px solid black;
+}
+
+/* src/components/AdminPanel/AdminPanel.css */
+
+.table img {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+
+  .nav-link.active {
+    background-color: #6c757d !important;
+  }
+
+  /* src/components/AdminPanel/AdminPanel.css */
+
+.table img {
+    width: 100px;
+    height: auto;
+  }
+
+  .btn {
+    margin-right: 10px;
+  }
+
+  .nav-link.active {
+    background-color: #6c757d !important;
+  }

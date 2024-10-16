@@ -48,33 +48,37 @@ function Homepage() {
               <div className='select_item'>           
                 <select   style={{ width: '150px', height: '50px', fontSize: '20px' , borderColor:'transparent',borderRadius: '5px' }}>
                     <option value="location">Location</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                    <option value="Seaside">Seaside</option>
+                  <option value="Mountains">Mountains</option>
+                  <option value="CountrySide">CountrySide</option>
+                  <option value="CitySide">CitySide</option>
+                  <option value="Village">Village</option>
+                  <option value="Town">Town</option>
                   </select>
               </div>
-              <div className='select_item' >           
+              <div className='select_item' >
                   <select style={{ width: '150px', height: '50px', fontSize: '15px',borderColor:'transparent' ,borderRadius: '5px' }}>
                     <option value="dates">Dates</option>
                     <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                  
                   </select>
               </div>
-              <div className='select_item'>           
+              <div className='select_item'>
                   <select  style={{ width: '150px', height: '50px', fontSize: '15px',borderColor:'transparent',borderRadius: '5px' }}>
                     <option value="guest">Guest</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                    <option value="fiat">8</option>
+                  <option value="audi">10</option>
+                  <option value="audi">15</option>
+                  <option value="audi">20</option>
                   </select>
               </div>
-              <div className='select_item'>           
+              <div className='select_item'>
                   <select   style={{ width: '150px', height: '50px', fontSize: '20px' ,borderColor:'transparent',borderRadius: '5px'}}>
                     <option value="price">Price</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                    <option value="saab">$20-$100</option>
+                  <option value="fiat">$100-$500</option>
+                  <option value="audi">$500-$1000</option>
+                  <option value="audi">$1000-$5000</option>
                   </select>
               </div>
 
