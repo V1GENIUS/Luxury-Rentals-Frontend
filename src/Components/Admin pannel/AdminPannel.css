@@ -20,7 +20,7 @@
     padding: 10px;
 
 }
-/*  */
+
 .existing-villas{
 
     margin-inline-start: 0px;
@@ -80,10 +80,23 @@
   background-color: black;
   color: white;
   border-radius: 10px;
-  margin-left: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+ margin: 15px;
+ cursor: pointer;
 }
+.edit_btn{
+  width: 100px;
+  height: 30px;
+  border: transparent;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  padding-top: 9px;
+ margin: 15px;
+ /* margin-top: 10px; */
+ font-size: 13px;
+}
+
 
 .table {
   border: 0.5px solid black;

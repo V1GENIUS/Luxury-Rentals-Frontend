@@ -1,7 +1,7 @@
 import React, { useState  ,useEffect  } from 'react';
 import { useLocation , Outlet  } from 'react-router-dom'; 
 import './VillaView.css';
-import axios from 'axios';
+
 
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
@@ -59,18 +59,23 @@ import icon43 from '../Icons/email.png'
 import icon44 from '../Icons/internet.png'
 import icon45 from '../Icons/email (1).png'
 import { loadStripe } from '@stripe/stripe-js';
-
+import Villasbg from '../Images/villasbg.png';
 
 function VillaView(props) {
+  const villasbgimg = {
+    backgroundImage: `url(${Villasbg})`,
+    height: '100%',
+    backgroundSize: 'cover',
+  };
   const { state } = useLocation();
   const villa = state.villa; 
   const [date, setDate] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('stripe');
     const [paypalLoaded, setPaypalLoaded] = useState(false);
-
+    
     useEffect(() => {
       if (paymentMethod === 'paypal' && !paypalLoaded) {
-        // Load PayPal script dynamically
+      
         const script = document.createElement('script');
         script.src = "https://www.paypal.com/sdk/js?client-id=Af2STNtk04CHiNvitle3T3Re1tdVlPQeggU2hbl5-Wx6cQhd_JRpUbE0fDR_gxrSHdXMmDJy_1hET4EE";
         script.addEventListener('load', () => setPaypalLoaded(true));
@@ -124,39 +129,7 @@ function VillaView(props) {
         alert(`Error in payment processing ${error.message}`);
     }
 }
-const handlePayPalPayment = async () => {
-  const body = {
-    paymentMethod: 'paypal',
-    villa: { price: 150, Villaname: "Luxury Villa" },  
-    quantity: 1
-  };
 
-  try {
-    const response = await axios.post(`${apiURL}/create-payment-order`, body);
-    const { orderID } = response.data;
-
-    window.paypal.Buttons({
-      createOrder: () => orderID,
-      onApprove: async (data, actions) => {
-        try {
-          const captureResponse = await axios.post(`${apiURL}/capture-paypal-payment`, { orderId: data.orderID });
-          alert('Payment successful!');
-        } catch (error) {
-          console.error('Error capturing PayPal payment:', error);
-          alert('Payment capture failed: ' + error.message);
-        }
-      },
-      onError: (err) => {
-        console.error('PayPal Checkout Error:', err);
-        alert('PayPal Checkout Error: ' + err);
-      }
-    }).render('#paypal-button-container');
-
-  } catch (error) {
-    console.error('Error creating PayPal order:', error);
-    alert('Error creating PayPal order: ' + error.message);
-  }
-};
 
 
 return (
@@ -221,7 +194,7 @@ return (
 
           <div className='page1_content'>
             <div >
-            <img className='main_img' src={villa.Imageview} alt="homepage" width="680" height="544" ></img>
+            <img className='main_img' src={villa.Imageview} alt="homepage" width="680" height="477" ></img>
             <div className='pricebox1'>
                 <text className='price1'>From <b> € {villa.price} / daily</b></text>
               </div>
@@ -229,10 +202,10 @@ return (
 
             <div style={{display:'flex' , flexWrap:'wrap'}}>
 
-              <img className='img_gallary' src={img1gallary} alt="homepage" width="280" height="220"  ></img>
-              <img className='img_gallary' src={img2gallary} alt="homepage" width="280" height="220" ></img>
-              <img className='img_gallary' src={img3gallary} alt="homepage" width="280" height="220" style={{marginTop:'-75px'}} ></img>
-              <img className='img_gallary' src={img4gallary} alt="homepage" width="280" height="220" style={{marginTop:'-75px'}} ></img>
+              <img className='img_gallary1' src={img1gallary} alt="homepage" width="280" height="230"  ></img>
+              <img className='img_gallary1' src={img2gallary} alt="homepage" width="280" height="230" ></img>
+              <img className='img_gallary1' src={img3gallary} alt="homepage" width="280" height="230" style={{marginTop:'15px'}} ></img>
+              <img className='img_gallary1' src={img4gallary} alt="homepage" width="280" height="230" style={{marginTop:'15px'}} ></img>
 
             </div>
           </div>
@@ -596,7 +569,7 @@ return (
       </div>
 
 {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-      <div className='villaviewPage'>
+      <div className='villaviewPage' style={villasbgimg}>
         <div className='villaView' >
           <div className='connection'>
 

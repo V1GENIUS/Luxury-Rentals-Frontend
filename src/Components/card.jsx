@@ -6,17 +6,18 @@ import icon6 from '../Images/users.png';
 import icon7 from '../Images/bed.png';
 import icon8 from '../Images/blueprint.png';
 import icon9 from '../Images/bathtub.png';
+import  '../Components/card.css'
 
 function Card() {
-  const [villas, setVillas] = useState([]); // State to store villa data
+  const [villas, setVillas] = useState([]);
   const navigate = useNavigate();
 
-  // Fetch villa data from the backend
+
   useEffect(() => {
     const fetchVillas = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/villas'); // Replace with your actual API endpoint
-        setVillas(response.data); // Assuming the data is an array of villas
+        const response = await axios.get('http://localhost:4000/villas');
+        setVillas(response.data);
       } catch (error) {
         console.error('Error fetching villa data:', error);
       }
@@ -28,20 +29,18 @@ function Card() {
   const handleCardClick = (villa) => {
     navigate('/villa-view', { state: { villa } });
   };
-
+ 
   return (
     <>
       {villas.length > 0 ? (
         villas.map((villa, index) => {
           return (
-            <div key={index} onClick={() => handleCardClick(villa)}>
+               <div className='cards'  key={index} onClick={() => handleCardClick(villa)}>
+
               <div className='card'>
-                <img style={{width:'302px' , height:'266px'}}
-                  className='imgvilla'
+                <img style={{width:'302px' , height:'200px' , borderRadius:'4px 4px 30px 4px'}}
                   src={`${villa.Imageview}`} 
                   alt="homepage"
-                  width="302"
-                  height="266"
                 />
                 <div className='pricebox'>
                   <text className='price'>
@@ -58,7 +57,7 @@ function Card() {
                   className='white_box'
                   style={{
                     backgroundColor: 'white',
-                    marginTop: '-55px',
+                    marginTop: '-10px',
                     borderRadius: '10px',}}>
                   <div>
                     <div className='location_2'>
@@ -128,6 +127,7 @@ function Card() {
                 </div>
               </div>
             </div>
+          
           );
         })
       ) : (

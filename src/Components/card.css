@@ -1,17 +1,25 @@
 .cards{
     display: flex;
     justify-content: center;
+    width: 302px;
+    padding: 50px;
+    transition:  5ms;
+  }
+
+  .cards:hover {
+    width: 310px;
+    height: 260px;
   }
 .card{
-  
-   width: 382px;
-   height: 306px;
+   height: 250px;
+   width: 302px;
    cursor: pointer;
-} 
+}
+
 
 .pricebox{
     position: relative;
-    cursor: pointer;
+    top: 65px;
   }
   .price{
     position: absolute;
@@ -32,7 +40,7 @@
     height: 20px;
     border-radius: 5px 5px 15px 5px;
     left: 260px;
-    cursor: pointer;
+   
   }
   
   .location_2{
@@ -40,14 +48,11 @@
     margin-inline-start: 20px;
     
   }
-  .imgvilla{
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  
   .white_box{
-    width: 302px;
+   
     border-radius: 10px;
-    cursor: pointer;
+   
    }
   
   .card_des_2{

@@ -4,10 +4,16 @@ import Footer from '../Components/Footer'
 import '../Pages/Villas.css'
 import Card from '../Components/card'
 import close from '../Icons/close.png'
+import page2img from '../Images/villasbg.png'
 
 
 
 function Villas() {
+  const page_2img = {
+    backgroundImage: `url(${page2img})`,
+    height: '100%',
+    backgroundSize: 'cover',
+  };
   const [showForm, setShowForm] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -214,13 +220,13 @@ function Villas() {
    </div>
 
 
-          <div style={{cursor:'pointer'}} className='Cards'>
+          <div className='Cards'>
             <Card  />
           </div>
 
           <div className='page7'>
 
-           <div className='page__2'>
+           <div className='page__2' style={page_2img}>
             <div className='villas_2' >
               <div className='connection_villa'>
 

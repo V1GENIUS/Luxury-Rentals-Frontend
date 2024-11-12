@@ -26,7 +26,7 @@ margin-top: -30px;
     padding-left: 50px;
 }
 .villaviewPage{
-    background-image: url('/src/Images/villasbg.png');
+    
      background-size: cover;   
 }
 .section_1{
@@ -37,15 +37,13 @@ margin-top: -30px;
 }
 .page1_content{
     display: flex;
-    /* justify-content: center; */
-    /* margin-top: 10px; */
-    /* margin-left: 10px; */
+ 
 }
 .main_img{
-    /* margin-top: 20px; */
-    /* margin-left: 20px; */
+  
     margin-bottom: 0;
     position: relative;
+    border-radius: 5px;
 
 }
 .buy{
@@ -69,7 +67,7 @@ margin-top: -30px;
   .price1{
     position: absolute;
     background-color: #F5E9D6;
-    bottom: 500px;
+    bottom: 425px;
     width: 180px;
     height: 28px;
     padding: 5px;
@@ -78,11 +76,12 @@ margin-top: -30px;
     left: 30px;
   }
   
-.img_gallary{
-    /* margin-top: 2px; */
+.img_gallary1{
+   
     margin-left: 15px;
     border-radius: 5px;
 }
+
 .VillaPage2
 {
    
@@ -92,7 +91,7 @@ margin-top: -30px;
 }
 .villa_facilty0{
     width: 600px;
-    margin-inline-start: 100px;
+    margin-inline-start: 70px;
 }
 .villaView{
     height: 630px;
@@ -155,11 +154,11 @@ margin-top: -30px;
     border-radius:8px 80px 8px 8px ;
     height: 450px;
     width: 380px;
-    margin-inline-start: 230px;
+    margin-inline-start: 250px;
     margin-top: 50px;
    
 }
-/* ////////////////////////////////////////////////// */
+
 
 
 .section_3{
@@ -173,12 +172,8 @@ margin-top: -30px;
   text-align: left;
 
 }
-/* //////////////////////////////// */
-
-
 .section_4{
     height: 500px;
-
 }
 .content_4{
     width: 1250px;
@@ -228,7 +223,7 @@ margin-inline-start: 300px;
 }
 
 
-/*  ////////////////////////////////////////////////// */ */
+
 
 .section_4{
     height: 500px;

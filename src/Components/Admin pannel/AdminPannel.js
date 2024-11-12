@@ -1,4 +1,4 @@
-// src/components/AdminPanel/AdminPanel.jsx
+
 import React, { useEffect, useState } from 'react';
 import SidebarAdmin from './SidebarAdmin'; // Adjust the import path if necessary
 import VillaList from './VillaList';

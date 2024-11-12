@@ -1,8 +1,7 @@
-// src/components/AdminPanel/VillaList.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './AdminPannel.css'; // Custom CSS for additional styling
+import './AdminPannel.css';
 
 const VillaList = ({ villas, setVillas }) => {
   const handleDelete = async (id) => {
@@ -54,9 +53,9 @@ const VillaList = ({ villas, setVillas }) => {
                   <td>{villa.guest}</td>
                   <td>{villa.bedrooms}</td>
                   <td>{villa.bathrooms}</td>
-                  <td style={{display:'grid'}}>
-                    <Link  to={`/admin/edit-villa/${villa._id}`} style={{textDecoration:'none' , width:'100px', height:'20px', marginRight:'10px', color:'black' , fontSize:'18px' }} >
-                     <b> Edit</b>
+                  <td style={{display:'grid', height:'160px'}}>
+                    <Link  to={`/admin/edit-villa/${villa._id}`} className="edit_btn"  >
+                     <b> Update</b>
                     </Link>
                     <button onClick={() => handleDelete(villa._id)} className="delete_btn">
                       Delete

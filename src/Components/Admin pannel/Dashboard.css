@@ -1,0 +1,16 @@
+.dashboard{
+    /* text-align: center; */
+    /* justify-content: center; */
+    width: 1220px;
+}
+
+.all_villass{
+    height: 120px;
+    width: 265px;
+    border-radius: 20px;
+    background-color: antiquewhite;
+    margin-left: 60px;
+    margin-top: 10px;
+    text-align: center;
+}
+

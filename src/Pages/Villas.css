@@ -68,7 +68,7 @@
 }
 
 .page__2{
-    background-image: url('/src/Images/villasbg.png');
+    /* background-image: url('../Images/villasbg.png'); */
      background-size: cover;
      height: 100%;   
 }

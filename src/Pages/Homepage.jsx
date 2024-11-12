@@ -22,17 +22,37 @@ import image3 from '../Images/aboutimg3.png'
 import image4 from '../Images/topVillas1.png'
 import image5 from '../Images/Rectangle 123.png'
 import image6 from '../Images/Rectangle 123 (1).png'
+import page7bg from '../Images/page7bg.png';
+import page5bg from '../Images/page5bg.png';
+import homebg from '../Images/homepage.png';
+
 
 
 
 
 function Homepage() {
+  const background7bg = {
+    backgroundImage: `url(${page7bg})`,
+    height: '500px',
+    backgroundSize: 'cover',
+  };
+  const background5bg = {
+    backgroundImage: `url(${page5bg})`,
+    height: '600px',
+    backgroundSize: 'cover',
+  };
+  const backgroundHome = {
+    backgroundImage: `url(${homebg})`,
+    height: '600px',
+    backgroundSize: 'cover',
+  };
+
   
   return (
     <>
     
     <div className='homepage' > 
-      <div className='bg-image' >
+      <div className='bg-image' style={backgroundHome} >
         <Navbar/>
         <div className='heading_1'>
           <h1>BE OUR GUEST</h1>
@@ -103,15 +123,15 @@ function Homepage() {
           <h5 >Curabitur efficitur ante vel mi bibendum, et maximus nisl ultricies. Morbi nec tempus dui, sit amet facilisis nisl.<br/> Ut vel urna quis urna tristique tempus. Etiam lobortis est at mauris eleifend, id tempor purus ultricies.</h5>
         </div>
 
-        <div className='cards'>
-          <div className='card'>
+        <div className='homecards'>
+          <div className='homecard'>
             <div>
               <img className='imgvilla' src={image4} alt="homepage" width="302" height="266" ></img>
-              <div className='pricebox'>
-               <text className='price'>From <b> € 280 / daily</b></text>
+              <div className='homepricebox'>
+               <text className='homeprice'>From <b> € 280 / daily</b></text>
                  
               </div>
-              <div className='pricebox'>
+              <div className='homepricebox'>
                <img className='heart' src={heart} alt="homepage" width="40" height="40" ></img>
               </div>
                 
@@ -162,15 +182,15 @@ function Homepage() {
           </div>
                         
             </div> 
-            <div className='card'>
+            <div className='homecard'>
 
               <div>
                 <img className='imgvilla' src={image5} alt="homepage" width="302" height="266" ></img>
-                <div className='pricebox'>
-                  <text className='price'>From <b> € 110 / daily</b></text>
+                <div className='homepricebox'>
+                  <text className='homeprice'>From <b> € 110 / daily</b></text>
                  
                 </div>
-                <div className='pricebox'>
+                <div className='homepricebox'>
                 <img className='heart' src={heart} alt="homepage" width="40" height="40" ></img>
                 </div>
                 
@@ -225,15 +245,15 @@ function Homepage() {
           </div>
           </div>
             </div> 
-            <div className='card'>
+            <div className='homecard'>
 
               <div>
                 <img className='imgvilla' src={image6} alt="homepage" width="302" height="266" ></img>
-                <div className='pricebox'>
-                  <text className='price'>From <b> € 240 / daily</b></text>
+                <div className='homepricebox'>
+                  <text className='homeprice'>From <b> € 240 / daily</b></text>
                  
                 </div>
-                <div className='pricebox'>
+                <div className='homepricebox'>
                 <img className='heart' src={heart} alt="homepage" width="40" height="40" ></img>
                 </div>
                 
@@ -366,7 +386,7 @@ function Homepage() {
       </div>
 {/* //////////////////////////////////////////////////////////////////////////////////// */}
 
-    <div className='page5'>
+    <div className='page5' style={background5bg}>
       <div className='container5'>
        <div className='contain5'>
         
@@ -409,8 +429,8 @@ function Homepage() {
       </div> 
 {/* /////////////////////////////////////////////////////////////////////////////////// */}
 
-      <div className='page7'>
-
+      <div className='page7'style={background7bg} >
+     
 
       <div className='about_3' >
         <div className='connect'>
@@ -422,7 +442,7 @@ function Homepage() {
             <div style={{display:'flex'}}>
               <div style={{marginInlineStart:'15px'}}>
                 <h3>
-                  Phone     
+                  Phone
                 </h3>
                 <h3>
                   Email       
@@ -474,6 +494,7 @@ function Homepage() {
       </div>
 
       </div>
+
        
     <Footer/>
   </>

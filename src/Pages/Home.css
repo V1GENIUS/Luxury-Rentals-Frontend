@@ -4,14 +4,14 @@ letter-spacing: 0.5px;
 }
 
 .homepage{
-  height: 600px;
+  height: 584px;
  
 }
 
 .bg-image{
    height: 600px;
    max-width:100% ;
-   background-image: url(../Images/homepage.png);
+   /* background-image: url(../Images/homepage.png); */
    background-size: cover; 
  
 }
@@ -79,22 +79,22 @@ text-align: center;
 .section_2{
     height: 600px;
     background-color: #F5F3F1;
-    margin-top: -10;
+    /* margin-top: -10; */
     }
-  .cards{
+  .homecards{
     display: flex;
     justify-content: center;
   }
-.card{
+.homecard{
   
    width: 382px;
    height: 306px;
 } 
 
-.pricebox{
+.homepricebox{
   position: relative;
 }
-.price{
+.homeprice{
   position: absolute;
   background-color: #F5E9D6;
   bottom: 230px;
@@ -177,7 +177,7 @@ margin-inline-start: 20px;
   /* ////////////////////////////////////////////////////////////////////////////////// */
 
   .page5{
-    background-image: url('/src/Images/page5bg.png');
+    /* background-image: url('../Images/page5bg.png'); */
     height: 600px;
     background-size: cover; 
   }
@@ -203,12 +203,17 @@ margin-inline-start: 20px;
 
 
 .page7{
-    background-image: url('/src/Images/page7bg.png');
+    /* background-image: url('/luxury/src/Images/page7bg.png'); */
    height: 500px;
     background-size: cover; 
     border-radius: 50px;
-    
     margin-top: 0;
+}
+.page7Image{
+  display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1; 
 }
 .About6{
     display: flex;

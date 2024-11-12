@@ -20,6 +20,7 @@ import EditVilla from './Components/Admin pannel/EditVilla';
 import Success from './Components/PaymentPage/Success';
 import Cancel from './Components/PaymentPage/Cancel';
 import ProtectRoute from './Components/Admin pannel/ProtectRoute';
+import Dashboard from './Components/Admin pannel/Dashboard';
 function App() {
   //const [token, setToken] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('login'));
@@ -49,7 +50,9 @@ function App() {
         <Route path="/villa-view" element={<VillaView />} />
 
         <Route path="/admin" element={<ProtectRoute setToken={setToken} />}>
-                <Route path="" element={<AdminPanel setToken={setToken} />} />
+                <Route path="" element={<Dashboard  setToken={setToken}/>} />
+                <Route path="villa-list" element={<AdminPanel  />} />
+                
                 <Route path="create-villa" element={<CreateVilla />} />
                 <Route path="edit-villa/:id" element={<EditVilla />} />
             </Route>

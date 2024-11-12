@@ -1,19 +1,18 @@
-// src/components/EditVilla/EditVilla.jsx
 import React, { useState, useEffect } from 'react';
-//import SidebarAdmin from '../Admin pannel/SidebarAdmin';
+import SidebarAdmin from '../Admin pannel/SidebarAdmin';
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 
 function EditVilla() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { setVillas } = useOutletContext(); // Access setVillas from context
+  const { setVillas } = useOutletContext(); 
   const [villaData, setVillaData] = useState({
     Villaname: '',
     price: '',
     location: '',
     place: '',
-    Imageview: null, // Holds the file
+    Imageview: null,
     guest: '',
     bedrooms: '',
     area: '',
@@ -23,6 +22,7 @@ function EditVilla() {
   const [previewImage, setPreviewImage] = useState(null); // For image preview
   const [currentImage, setCurrentImage] = useState('');
   const [formMessage, setFormMessage] = useState(''); // For success/error messages
+
 
   // Fetch villa data on component mount
   useEffect(() => {
@@ -138,8 +138,8 @@ function EditVilla() {
   };
 
   return (
-    <div className="d-flex">
-      {/* <SidebarAdmin /> */}
+    <div style={{display:'flex'}}>
+      <SidebarAdmin />
       <div  style={{ backgroundColor: 'grey', width:'1120px' }}>
         <h2 style={{marginLeft:'500px', color:'white', paddingTop:'20px'}}>Edit Villa</h2>
         <form onSubmit={handleUpdateVilla} encType="multipart/form-data" className="mt-4">
@@ -261,7 +261,7 @@ function EditVilla() {
               )
             )}
           </div>
-          
+
           <button type="submit" className='Add_btn'>
             Update Villa
           </button>

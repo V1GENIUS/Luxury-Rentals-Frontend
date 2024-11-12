@@ -1,4 +1,3 @@
-// src/components/AdminPanel/SidebarAdmin.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -9,6 +8,13 @@ const SidebarAdmin = () => {
         <h1 ><b>Admin Panel</b></h1>
       </div>
       <nav style={{display:'grid'  }} className="">
+      <NavLink style={{padding:'20px' , fontSize:'18px' , textDecoration:'none' ,color:'white'}}
+          to="/admin"
+          end
+          className={({ isActive }) => 'nav-link' + (isActive ? ' active bg-secondary' : '')}
+        >
+          <b>Dashboard</b>
+        </NavLink>
         <NavLink style={{padding:'20px' , fontSize:'18px' , textDecoration:'none' , color:'white'}}
           to="/admin/create-villa"
           className={({ isActive }) => 'nav-link' + (isActive ? ' active bg-secondary' : '')}
@@ -16,7 +22,7 @@ const SidebarAdmin = () => {
           <b>Create Villa</b>
         </NavLink>
         <NavLink style={{padding:'20px' , fontSize:'18px' , textDecoration:'none' ,color:'white'}}
-          to="/admin"
+          to="/admin/villa-list"
           end
           className={({ isActive }) => 'nav-link' + (isActive ? ' active bg-secondary' : '')}
         >

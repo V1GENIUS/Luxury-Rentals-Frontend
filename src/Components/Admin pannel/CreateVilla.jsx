@@ -1,8 +1,9 @@
-// src/components/CreateVilla/CreateVilla.jsx
 import React, { useState } from 'react';
-//import SidebarAdmin from './SidebarAdmin';
+import SidebarAdmin from './SidebarAdmin';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import axios from 'axios';
+
+
 
 function CreateVillas() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function CreateVillas() {
     price: '',
     location: '',
     place: '',
-    Imageview: null, // Holds the file
+    Imageview: null, 
     guest: '',
     bedrooms: '',
     area: '',
@@ -81,9 +82,9 @@ function CreateVillas() {
         const newVilla = response.data;
         setVillas((prevVillas) => [...prevVillas, newVilla]); 
         resetVillaData();
-        setFormMessage('Villa added successfully!');
         alert('Villa added successfully!');
-        navigate('/admin'); // Navigate back to Admin Panel
+
+        navigate('/admin');
       } else {
         setFormMessage(`Error adding villa: ${response.data.message}`);
         alert(`Error adding villa: ${response.data.message}`);
@@ -113,10 +114,10 @@ function CreateVillas() {
     setFormMessage('');
   };
 
-  return (<>
-  
-    <div className="">
-      {/* <SidebarAdmin /> */}
+  return (
+  <>
+    <div style={{display:'flex'}}>
+      <SidebarAdmin />
       <div style={{ backgroundColor: 'grey', width:'1120px' }}>
         <h1 style={{marginLeft:'440px', color:'white', paddingTop:'20px'}}>Create a New Villa</h1>
         <form onSubmit={handleAddVilla} encType="multipart/form-data" className="mt-4">
@@ -132,7 +133,6 @@ function CreateVillas() {
               required
             />
           </div>
-          
           <div className="form-group">
             <label ><b>Price (€):</b></label>
             <input
@@ -145,7 +145,6 @@ function CreateVillas() {
               required
             />
           </div>
-          
           <div className="form-group">
             <label ><b>Location:</b></label>
             <input
@@ -158,7 +157,7 @@ function CreateVillas() {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label ><b>Place:</b></label>
             <input
@@ -172,7 +171,6 @@ function CreateVillas() {
             />
           </div>
 
-          
           <div className="form-group">
             <label><b>Area (m²):</b></label>
             <input
@@ -185,7 +183,7 @@ function CreateVillas() {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label><b>Guests:</b></label>
             <input
@@ -211,8 +209,7 @@ function CreateVillas() {
               required
             />
           </div>
-          
-          
+
           <div className="form-group">
             <label><b>Bathrooms:</b></label>
             <input
@@ -225,7 +222,7 @@ function CreateVillas() {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label><b>Villa Image (Min 300x200 px):</b></label>
             <input
@@ -243,14 +240,12 @@ function CreateVillas() {
               </div>
             )}
           </div>
-          
           <button type="submit" className='Add_btn' >
             Add Villa
           </button>
           <button type="button" className='Add_btn' onClick={resetVillaData}>
             Cancel
           </button>
-          
           {formMessage && (
             <p style={{ color: formMessage.includes('successfully') ? 'green' : 'red', marginTop: '10px' }}>
               {formMessage}
