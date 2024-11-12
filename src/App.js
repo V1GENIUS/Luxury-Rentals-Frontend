@@ -1,6 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
-import React, { useState , Navigate } from 'react';
+import {  Routes, Route  } from 'react-router-dom';
+import React, { useState  } from 'react';
 
 import Villas from './Pages/Villas';
 import Contact from './Pages/Contact';

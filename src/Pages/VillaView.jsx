@@ -1,4 +1,4 @@
-import React, { useState  ,useEffect  } from 'react';
+import React, { useState    } from 'react';
 import { useLocation , Outlet  } from 'react-router-dom'; 
 import './VillaView.css';
 
@@ -70,18 +70,18 @@ function VillaView(props) {
   const { state } = useLocation();
   const villa = state.villa; 
   const [date, setDate] = useState(null);
-  const [paymentMethod, setPaymentMethod] = useState('stripe');
-    const [paypalLoaded, setPaypalLoaded] = useState(false);
+  // const [paymentMethod, setPaymentMethod] = useState('stripe');
+    // const [paypalLoaded, setPaypalLoaded] = useState(false);
     
-    useEffect(() => {
-      if (paymentMethod === 'paypal' && !paypalLoaded) {
+    // useEffect(() => {
+    //   if (paymentMethod === 'paypal' && !paypalLoaded) {
       
-        const script = document.createElement('script');
-        script.src = "https://www.paypal.com/sdk/js?client-id=Af2STNtk04CHiNvitle3T3Re1tdVlPQeggU2hbl5-Wx6cQhd_JRpUbE0fDR_gxrSHdXMmDJy_1hET4EE";
-        script.addEventListener('load', () => setPaypalLoaded(true));
-        document.body.appendChild(script);
-      }
-    }, [paymentMethod, paypalLoaded]);
+    //     const script = document.createElement('script');
+    //     script.src = "https://www.paypal.com/sdk/js?client-id=Af2STNtk04CHiNvitle3T3Re1tdVlPQeggU2hbl5-Wx6cQhd_JRpUbE0fDR_gxrSHdXMmDJy_1hET4EE";
+    //     script.addEventListener('load', () => setPaypalLoaded(true));
+    //     document.body.appendChild(script);
+    //   }
+    // }, [paymentMethod, paypalLoaded]);
  
   const stripePromise = loadStripe("pk_test_51Q5kKeSFABMAnpHQCwgdz997rYzRt7VpeY7d6oa9pIniTErioqXkRisMSAeVxUFLSgGzRdTqZshj1cIln7E9FNjx00VAwfu6ro");
 
