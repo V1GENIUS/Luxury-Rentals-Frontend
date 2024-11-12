@@ -70,7 +70,7 @@ function CreateVillas() {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/villas', formData, {
+      const response = await axios.post('https://luxury-rental-backend.onrender.com/villas', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -56,15 +56,7 @@ function App() {
                 <Route path="create-villa" element={<CreateVilla />} />
                 <Route path="edit-villa/:id" element={<EditVilla />} />
             </Route>
-        {/* admin pannel components */}
-        {/* <Route path="/admin" element={<ProtectRoute />} >
-         <Route path="admin" element={<  AdminPanel setToken={setToken} />} />
-         <Route path="create-villa" element={<CreateVilla />} />
-          <Route path="edit-villa/:id" element={<EditVilla />} />
-         </Route> */}
-        {/* <Route path="/admin" element={<AdminPanel />}>
-          
-        </Route> */}
+       
 
         {/* PaymentPages  */}
         <Route path="/success" element={<Success />} />

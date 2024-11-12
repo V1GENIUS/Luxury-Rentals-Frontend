@@ -13,7 +13,7 @@ function Signup() {
       e.preventDefault();
       try {
 
-        let response = await fetch('http://localhost:4000/user/signup', {
+        let response = await fetch('https://luxury-rental-backend.onrender.com/user/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ function Login({ setToken }) {
 
     try {
       // Fetch API to call the backend login endpoint
-      let response = await fetch('http://localhost:4000/user/login', {
+      let response = await fetch('https://luxury-rental-backend.onrender.com/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -7,7 +7,7 @@ function GetUser({ token }) {
 
     const getUser = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/user/getUser', {
+            const response = await axios.get('https://luxury-rental-backend.onrender.com/user/getUser', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(response.data);

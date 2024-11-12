@@ -85,7 +85,7 @@ function VillaView(props) {
  
   const stripePromise = loadStripe("pk_test_51Q5kKeSFABMAnpHQCwgdz997rYzRt7VpeY7d6oa9pIniTErioqXkRisMSAeVxUFLSgGzRdTqZshj1cIln7E9FNjx00VAwfu6ro");
 
-  const apiURL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api'; 
+  const apiURL = process.env.REACT_APP_API_URL || 'https://luxury-rental-backend.onrender.com/api'; 
  
   const handleStripePayment = async () => {
     const stripe = await stripePromise;

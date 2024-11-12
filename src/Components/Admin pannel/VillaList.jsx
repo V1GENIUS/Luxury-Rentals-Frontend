@@ -8,7 +8,7 @@ const VillaList = ({ villas, setVillas }) => {
     if (!window.confirm('Are you sure you want to delete this villa?')) return;
 
     try {
-      await axios.delete(`http://localhost:4000/villas/${id}`);
+      await axios.delete(`https://luxury-rental-backend.onrender.com/villas/${id}`);
       setVillas(villas.filter((villa) => villa._id !== id));
       alert('Villa deleted successfully.');
     } catch (error) {

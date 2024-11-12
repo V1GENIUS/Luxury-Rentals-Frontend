@@ -28,7 +28,7 @@ function EditVilla() {
   useEffect(() => {
     const fetchVilla = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/villas/${id}`);
+        const response = await axios.get(`https://luxury-rental-backend.onrender.com/villas/${id}`);
         setVillaData({
           Villaname: response.data.Villaname,
           price: response.data.price,
@@ -94,7 +94,7 @@ function EditVilla() {
     }
 
     try {
-      const response = await axios.put(`http://localhost:4000/villas/${id}`, formData, {
+      const response = await axios.put(`https://luxury-rental-backend.onrender.com/villas/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
