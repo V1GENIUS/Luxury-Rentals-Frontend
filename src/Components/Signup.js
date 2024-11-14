@@ -9,28 +9,60 @@ function Signup() {
   const navigate = useNavigate();
 
 
+    // async function handleSignup(e) {
+    //   e.preventDefault();
+    //   try {
+
+    //     let response = await fetch('http://localhost:4000/user/signup', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({
+    //         name,
+    //         email,
+    //         password
+    //       }),
+    //     });
+
+    //     let result = await response.json();
+
+    //     // Check if signup was successful
+    //     if (response.status === 201) {
+    //       console.log('Signup successful:', result);
+    //       localStorage.setItem("user-info" ,JSON.stringify(result));
+    //       alert('User signed up successfully');
+    //       navigate('/login');
+    //     } else {
+    //       console.error('Signup failed:', result.message);
+    //       alert('Signup failed: ' + result.message);
+    //     }
+    //   } catch (error) {
+    //     console.error('Error during signup:', error);
+    //     alert('Error during signup: ' + error.message);
+    //   }
+    // };
+
     async function handleSignup(e) {
       e.preventDefault();
       try {
-
-        let response = await fetch('https://luxury-rental-backend.onrender.com/user/signup', {
+        const response = await fetch('https://luxury-rental-backend.onrender.com/user/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            name,
-            email,
-            password
-          }),
+          body: JSON.stringify({ name, email, password }),
         });
-
-        let result = await response.json();
-
-        // Check if signup was successful
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    
+        const result = await response.json();
+    
         if (response.status === 201) {
           console.log('Signup successful:', result);
-          localStorage.setItem("user-info" ,JSON.stringify(result));
+          localStorage.setItem("user-info", JSON.stringify(result));
           alert('User signed up successfully');
           navigate('/login');
         } else {
@@ -38,11 +70,11 @@ function Signup() {
           alert('Signup failed: ' + result.message);
         }
       } catch (error) {
-        console.error('Error during signup:', error);
+        console.error('Error during signup:', error.message);
         alert('Error during signup: ' + error.message);
       }
-    };
-
+    }
+    
     const handleRedirectToLogin = () => {
       navigate('/login'); // Redirects the user to the login page
     };

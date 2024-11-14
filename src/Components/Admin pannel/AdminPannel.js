@@ -16,7 +16,7 @@ function AdminPanel() {
   useEffect(() => {
     const fetchVillas = async () => {
       try {
-        const response = await axios.get('https://luxury-rental-backend.onrender.com/villas');
+        const response = await axios.get('https://luxury-rental-backend.onrender.com/villas/');
         setVillas(response.data);
         setLoading(false);
       } catch (err) {
